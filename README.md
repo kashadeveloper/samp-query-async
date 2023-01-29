@@ -1,15 +1,15 @@
-# samp-query-async
+# async-samp-query
 
 Simplified SAMP API client
 
 ## Installation
 Using **npm**
 ```
-npm install samp-query-async
+npm i async-samp-query
 ```
 or using **yarn**
 ```
-yarn add samp-query-async
+yarn add async-samp-query
 ```
 
 ## Code example
