@@ -11,6 +11,12 @@ const err = (text: string) => {
   new Error(text);
 };
 
+/**
+ * It queries a SAMP server and returns the response
+ * 
+ * @param {OptionsType} options - OptionsType
+ * @returns The response object is being returned.
+ */
 let query = async (options: OptionsType) => {
   let self = this;
   let obj: {
@@ -36,7 +42,7 @@ let query = async (options: OptionsType) => {
 
   await new Promise((resolve, reject) => {
     request.call(
-      self,
+      this,
       options,
       "i",
       async function (error: any, information: any) {
