@@ -14,7 +14,7 @@ yarn add async-samp-query
 
 ## Code example
 ```javascript
-import query from "samp-query-async";
+import query from "async-samp-query";
 
 async function main() {
   const data = await query({
@@ -55,3 +55,6 @@ Options:
   }
 }
 ```
+
+## Todo
+- Optimize dependencies
