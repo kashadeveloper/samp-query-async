@@ -47,7 +47,7 @@ let query = async (options: OptionsType) => {
       "i",
       async function (error: any, information: any) {
         if (error) {
-          return reject(error);
+          return reject(new Error(error));
         }
 
         response.address = options.host;
@@ -65,7 +65,7 @@ let query = async (options: OptionsType) => {
           "r",
           async function (error: string, rules: any) {
             if (error) {
-              return reject(error);
+              return reject(new Error(error));
             }
             rules.lagcomp = rules.lagcomp === "On" ? true : false;
 
