@@ -66,7 +66,7 @@ let query = async (options: OptionsType) => {
             rules.weather = parseInt(rules.weather, 10);
 
             response.rules = rules;
-            resolve(response)
+            resolve(response) 
           }
         );
       }
@@ -75,7 +75,7 @@ let query = async (options: OptionsType) => {
   return response
 };
 
-let request = function (options: any, opcode: 'r' | 'd' | 'i', callback: any) {
+let request = function (options: any, opcode: 'r' | 'd' | 'i', callback: Function) {
   let socket = dgram.createSocket("udp4");
   let packet = Buffer.alloc(11);
 
@@ -104,16 +104,16 @@ let request = function (options: any, opcode: 'r' | 'd' | 'i', callback: any) {
 
   let controller: any = undefined;
 
-  let onTimeOut = function () {
+  let onTimeOut = () => {
     socket.close();
-    return err("Socket timed out");
+    return callback.apply(options, ['Socket timed out.'])
   };
 
   controller = setTimeout(onTimeOut, options.timeout);
 
   socket.on("message", function (message) {
     if (controller) clearTimeout(controller);
-    if (message.length < 11) return callback.apply(options, [true]);
+    if (message.length < 11) return callback.apply(options, ['Socket invalid']);
     else {
       socket.close();
 
