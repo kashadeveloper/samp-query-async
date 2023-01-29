@@ -21,11 +21,11 @@ let query = async (options: OptionsType) => {
   options.port = options.port || 7777;
   options.timeout = options.timeout || 5000;
   if (!options.host) {
-    return err('Invalid "host" passed');
+    err('Invalid "host" passed');
   }
 
   if (!isFinite(options.port) || options.port < 1 || options.port > 65535) {
-    return err(
+    err(
       `Invalid port '${options.port}'. Port mus't be larger than 1 and less than 65535`
     );
   }
